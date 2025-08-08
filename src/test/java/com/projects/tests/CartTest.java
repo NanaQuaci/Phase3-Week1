@@ -3,7 +3,7 @@ package com.projects.tests;
 import com.projects.base.BaseTest;
 import com.projects.pages.CartPage;
 import com.projects.pages.LoginPage;
-import com.projects.testdata.LoginTestData;
+import com.projects.testdata.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Test;
 
@@ -21,8 +21,8 @@ public class CartTest extends BaseTest {
         driver.get(BASE_URL);
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         CartPage cartPage = new CartPage(driver);
@@ -43,8 +43,8 @@ public class CartTest extends BaseTest {
 
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         CartPage cartPage = new CartPage(driver);
@@ -70,8 +70,8 @@ public class CartTest extends BaseTest {
         driver.get(BASE_URL);
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
 

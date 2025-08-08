@@ -2,7 +2,7 @@ package com.projects.tests;
 
 import com.projects.base.BaseTest;
 import com.projects.pages.LoginPage;
-import com.projects.testdata.LoginTestData;
+import com.projects.testdata.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Test;
 
@@ -22,8 +22,8 @@ public class LoginTest extends BaseTest {
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         assertTrue(Objects.requireNonNull(driver.getCurrentUrl()).contains("inventory.html"));
@@ -37,8 +37,8 @@ public class LoginTest extends BaseTest {
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.INVALID_PASSWORD);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
+        loginPage.enterPassword(TestData.INVALID_PASSWORD);
         loginPage.clickLogin();
 
         assertTrue(loginPage.getErrorMessage().toLowerCase().contains("epic sadface"));
@@ -52,8 +52,8 @@ public class LoginTest extends BaseTest {
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.enterUsername(LoginTestData.INVALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterUsername(TestData.INVALID_USERNAME);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         assertTrue(loginPage.getErrorMessage().toLowerCase().contains("epic sadface"));
@@ -82,7 +82,7 @@ public class LoginTest extends BaseTest {
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
         loginPage.enterPassword("");
         loginPage.clickLogin();
 
@@ -98,7 +98,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.enterUsername("");
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         assertTrue(loginPage.getErrorMessage().toLowerCase().contains("epic sadface"));

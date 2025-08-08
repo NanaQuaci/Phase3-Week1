@@ -4,7 +4,7 @@ import com.projects.base.BaseTest;
 import com.projects.pages.CartPage;
 import com.projects.pages.CheckoutPage;
 import com.projects.pages.LoginPage;
-import com.projects.testdata.LoginTestData;
+import com.projects.testdata.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -18,8 +18,8 @@ public class CheckoutTest extends BaseTest {
     private void loginAndAddItem() {
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         CartPage cartPage = new CartPage(driver);
@@ -36,7 +36,7 @@ public class CheckoutTest extends BaseTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.openCart();
         checkoutPage.clickCheckout();
-        checkoutPage.enterCheckoutInfo("Nana", "Quaci", "00233");
+        checkoutPage.enterCheckoutInfo(TestData.VALID_FIRST_NAME, TestData.VALID_LAST_NAME, TestData.VALID_POSTAL_CODE);
         checkoutPage.clickContinue();
         checkoutPage.clickFinish();
 
@@ -53,7 +53,7 @@ public class CheckoutTest extends BaseTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.openCart();
         checkoutPage.clickCheckout();
-        checkoutPage.enterCheckoutInfo("", "Quaci", "00233");
+        checkoutPage.enterCheckoutInfo(TestData.EMPTY_FIRST_NAME, TestData.VALID_LAST_NAME, TestData.VALID_POSTAL_CODE);
         checkoutPage.clickContinue();
 
         assertTrue(checkoutPage.isErrorVisible());
@@ -70,7 +70,7 @@ public class CheckoutTest extends BaseTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.openCart();
         checkoutPage.clickCheckout();
-        checkoutPage.enterCheckoutInfo("Nana", "", "00233");
+        checkoutPage.enterCheckoutInfo(TestData.VALID_FIRST_NAME, TestData.EMPTY_LAST_NAME, TestData.VALID_POSTAL_CODE);
         checkoutPage.clickContinue();
 
         assertTrue(checkoutPage.isErrorVisible());
@@ -87,7 +87,7 @@ public class CheckoutTest extends BaseTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.openCart();
         checkoutPage.clickCheckout();
-        checkoutPage.enterCheckoutInfo("Nana", "Quaci", "");
+        checkoutPage.enterCheckoutInfo(TestData.VALID_FIRST_NAME, TestData.VALID_LAST_NAME, TestData.EMPTY_POSTAL_CODE);
         checkoutPage.clickContinue();
 
         assertTrue(checkoutPage.isErrorVisible());
@@ -103,8 +103,8 @@ public class CheckoutTest extends BaseTest {
 
         // Step 1: Login
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterUsername(LoginTestData.VALID_USERNAME);
-        loginPage.enterPassword(LoginTestData.VALID_PASSWORD);
+        loginPage.enterUsername(TestData.VALID_USERNAME);
+        loginPage.enterPassword(TestData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         // Step 2: Open Cart (without adding any items)
@@ -131,7 +131,7 @@ public class CheckoutTest extends BaseTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.openCart();
         checkoutPage.clickCheckout();
-        checkoutPage.enterCheckoutInfo("@Nana#", "$Quaci%", "00233");
+        checkoutPage.enterCheckoutInfo(TestData.SPECIAL_CHAR_FIRST_NAME, TestData.SPECIAL_CHAR_LAST_NAME, TestData.VALID_POSTAL_CODE);
         checkoutPage.clickContinue();
         checkoutPage.clickFinish();
 
@@ -148,7 +148,7 @@ public class CheckoutTest extends BaseTest {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.openCart();
         checkoutPage.clickCheckout();
-        checkoutPage.enterCheckoutInfo("Nana", "Quaci", "00233");
+        checkoutPage.enterCheckoutInfo(TestData.VALID_FIRST_NAME, TestData.VALID_LAST_NAME, TestData.VALID_POSTAL_CODE);
         checkoutPage.clickContinue();
         checkoutPage.clickCancel();
 
