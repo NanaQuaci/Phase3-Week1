@@ -94,5 +94,5 @@ jobs:
           fi
 
           curl -X POST -H 'Content-type: application/json' --data "{
-            \"text\": \"${EMOJI} UI Tests finished with status: *$STATUS*\n📦 Repo: $GITHUB_REPOSITORY\n🔗 Commit: <https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA|$GITHUB_SHA>\n📊 Report: https://nanaquaci.github.io/Advanced-Week8-UI/\"
+            \"text\": \"${EMOJI} UI Tests finished with status: *$STATUS*\n📦 Repo: $GITHUB_REPOSITORY\n🔗 Commit: <https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA|$GITHUB_SHA>\n📊 Report: https://nanaquaci.github.io/Phase3-Week1/\"
           }" ${{ secrets.SLACK_WEBHOOK_URL }}
