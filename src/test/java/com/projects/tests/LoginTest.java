@@ -19,6 +19,8 @@ public class LoginTest extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Description("Test valid login redirects user to the products page")
     public void testValidLogin() {
+
+        //For testing
         driver.get(BASE_URL);
         LoginPage loginPage = new LoginPage(driver);
 
