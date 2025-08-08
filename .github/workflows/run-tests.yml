@@ -23,8 +23,18 @@ jobs:
           java-version: '21'
           cache: 'maven'
 
-      - name: Run tests with Allure results
-        run: mvn clean test
+#      - name: Run tests with Allure results
+#        run: mvn clean test
+
+      - name: Build Docker image
+        run: docker build -t swaglabs_ui_tests .
+
+      - name: Run tests inside Docker
+        run: |
+            mkdir -p allure-results
+            docker run --rm \
+              -v ${{ github.workspace }}/allure-results:/app/allure-results \
+              swaglabs_ui_tests
 
       - name: Upload Allure results
         if: always()
